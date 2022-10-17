@@ -28,7 +28,7 @@ deploy:
   region: "us-east-1"
   app: django-tutorial
   env: django-env
-  bucket_name: "elasticbeanstalk-us-east-1-379666869800"
+  bucket_name: s3.buckets["elasticbeanstalk-us-east-1-379666869800"]
   on:
     repo: simaoalicechen/swe1-new
     branch: main
