@@ -1,36 +1,35 @@
 language: python
 python:
-  - 3.7
-script: 
-  - python manage.py migrate
-  - python manage.py collectstatic --noinput
-install:
-  - pip install -r requirements.txt
-  - pip install black
-  - pip install flake8
-  - pip install coverage
-  - pip install coveralls
+- 3.7
 script:
-  - black --check .
-  - black --check .
-  - flake8 .
-  # - coverage run --source=ebdjango,polls manage.py test
-  - coverage run -a --source="." manage.py
-cache: 
+- black --check .
+- black --check .
+- flake8 .
+- coverage run -a --source="." manage.py
+install:
+- pip install -r requirements.txt
+- pip install black
+- pip install flake8
+- pip install coverage
+- pip install coveralls
+cache:
   Expires: 0
   Pragma: no-cache
 after_success:
-  - coveralls
+- coveralls
 deploy:
-  - provider: elasticbeanstalk
-    access_key_id: AKIAVQZPIVYUF6UDMH6I
-    secret_access_key: 
-      secure: 'bO+FOoZ84hm8WM/faihjOR2oo+YgukFklcvHkQl8Sm+GUlROESFY+tvdKtDVenWzPPam28BAfM2WjnWzVy6mUZaFFQkADAngbumuDDQVSni9OTc0a873vhkghYgRmTclR8FybdDE9lkWukG8NbZNxkYA24cHWlF6Spdkgw+ZSZQfhZCPs7DyHzO2IepJaascXRsfvocikE5jgW4Aaup5/FkK9v0479NSudCCsAWOdlfKOeVvrAACRbmVzCBzYIOSHIuO31FemIJFL1BbGxK56HVPxac0J6AWZclPQ5HNlqI+AsB1imvna9q6JClCS/Fahpz0Fm4lxK7yloGZF3YKljULR60CgfSVBmGQ3m8nT0q/2ZT8ya04WySrmp2aDMvMFh2C5WgdOS7ZFtkaPmyElv6sJcFarDVB3DJOi+DSOmxZZ1zCY+gG5+eefjzSKue+QJnSWt2apzWYsrBZJCamGiOJVaen7oUQpPguyHRiqVHFlCOiVXp+vPsCv95polUWR/Xet4o6FOD/U+s7RHlesRbNjzl7oQdlvUJsifCq22oSHd2dnPm4hHkgE9ql2XZMRsqr7RCMrw0y7zfoRP7s7yIwmVcChsjRcCVj8nMQc+JjgvkGU9izmFMxgQxujSw+UMpGhH9y4tgMbqv9BxD81wpcYg12vWj1W8fZF1sxtvQ='
-    region: 'us-east-1'
-    app: 'django-tutorial'
-    env: 'django-env'
-    bucket_name: 'elasticbeanstalk-us-east-1-379666869800'
-    on:
-      # repo: simaoalicechen/swe1-new
-      branch: main
-    skip_cleanup: true
+- provider: elasticbeanstalk
+  access_key_id: AKIAVQZPIVYUF6UDMH6I
+  secret_access_key:
+    secure: bO+FOoZ84hm8WM/faihjOR2oo+YgukFklcvHkQl8Sm+GUlROESFY+tvdKtDVenWzPPam28BAfM2WjnWzVy6mUZaFFQkADAngbumuDDQVSni9OTc0a873vhkghYgRmTclR8FybdDE9lkWukG8NbZNxkYA24cHWlF6Spdkgw+ZSZQfhZCPs7DyHzO2IepJaascXRsfvocikE5jgW4Aaup5/FkK9v0479NSudCCsAWOdlfKOeVvrAACRbmVzCBzYIOSHIuO31FemIJFL1BbGxK56HVPxac0J6AWZclPQ5HNlqI+AsB1imvna9q6JClCS/Fahpz0Fm4lxK7yloGZF3YKljULR60CgfSVBmGQ3m8nT0q/2ZT8ya04WySrmp2aDMvMFh2C5WgdOS7ZFtkaPmyElv6sJcFarDVB3DJOi+DSOmxZZ1zCY+gG5+eefjzSKue+QJnSWt2apzWYsrBZJCamGiOJVaen7oUQpPguyHRiqVHFlCOiVXp+vPsCv95polUWR/Xet4o6FOD/U+s7RHlesRbNjzl7oQdlvUJsifCq22oSHd2dnPm4hHkgE9ql2XZMRsqr7RCMrw0y7zfoRP7s7yIwmVcChsjRcCVj8nMQc+JjgvkGU9izmFMxgQxujSw+UMpGhH9y4tgMbqv9BxD81wpcYg12vWj1W8fZF1sxtvQ=
+  region: us-east-1
+  app: django-tutorial
+  env: django-env
+  bucket_name: elasticbeanstalk-us-east-1-379666869800
+  on:
+    branch: main
+  skip_cleanup: true
+env:
+  global:
+  - secure: FlgxSD7aBINxnXYTmkZcGlbqwFuQ82vDiZRNb4gvA5LIadYew6NXbnv/aMvdQbsAj+w710HHpXnxNnFCumwBFYKG1WMDYhhhDRQ+kpuMN6iAVEQjtiMavO0hvrkJFEncsvnUox0fpE6JkfERdJq3cbxJ939xKxAPcgISQmHpkuPBFLq+3aJouSpQoTXd/c7shIaynk3q7A5QslACsabpRxxYqsUZDL0+A3EdWbkz4oRMnhsuPd+p+/OXdF26ZjTNrHDs7YKR+azz5zkyBQyTJBSdb1qIVAF8xqcEN8vu8ud2wD/bMsWLAQBS5R3HzXciUqLszdP//MzmHW9VtX17YWjkyzVvVs0BkakCV+Ybc1W8842gDKwM/xSKs722nCrU5OYGWnFJJK4jGxmmbH5mNs5GHQZyoZaXQv6S/6Q5NDtYhfVY9UCQga4Ir6mF4axiyh3vQOOq2OnLmKOLEhWlqTq1UKYH4fZzIdbXfZ7EzaoUnmJ8FT07bUra07oD/sHcbxgi2Yh36JX2QR1hJtq4ct5EaV5OlEtB+ZmQjBpSOlqI9UWYhOyzTxX6mPYDq6SFSl+SwZCuS13g9hRTq8oMDOLeqissvk6am0ZUh2pxv0DjpFQCSGzE25g3yMk7SQJQ4f0nMNX/blLB3Nn3/N3fgAZyKf+k47eEM654MsCoe9Y=
+  - secure: a/wK/wyebdB49+M6KMi9+uz9PuxC9bAkJ9YqCYpcwZIBWdaN4FJA+CD1JXm02tJPlT8/jp3a6wQ2dVKl3nO6h10HTLxHo+4UQcChaeo/q45ZHl7ePLHVrl0bX2qd8ZcEVrtshAonIqvkHqOZVgUSezfZZfo280fRXJ2l+c5UZ+hWN1w6fNQsFB04zVX2xAU6U7Mdcpisg1cyVE8OJAxr0cW2JHmM+aBzmqN8GLc/qeSVoolh+JlNrxB4YRSMBrVU5qbKkImJaTGeieQ5QQIz8KJEes7iXxeho+OGmdFcYlYf+BMiciuESTisH8eii523Q+OUnTHOnuzYzJMQDIv38jtHHzTdwMMN4ZJAYuKF2dmkyrSul8O4lWwdcjZ7d4hh88QrV9+LKP44w3Pr/dGipEyAzP8VCrglG3PMkLUQ3AE8rIdJUUE1u0Crihzvy+M7N3z8Pa5X0rur+PJ9z+Fu6lPksLM1QXAH2bc6LflEqxgWJppu7idEmClHg3oWqye2FO1hY0MbygPKIjJDA97lYNlmJIqJ1iJfkcTNcl6a/5L3LO8aqgR1Yph504vJAZ4HvRs85fBb3+bwMMo3Lj5uq3VFrnNZFZDwrf15MB7HroAd42Onl/IOJnn5c8yUfGgnhyJQHusxJhm0vwYcJpuH/egBI/gniX+RTJaS11WNSzo=
