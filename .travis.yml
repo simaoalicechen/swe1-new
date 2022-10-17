@@ -30,5 +30,5 @@ deploy:
   env: "django-env"
   bucket_name: "elasticbeanstalk-us-east-1-379666869800"
   on:
-    repo: simaoalicechen/swe1-new
+    # repo: simaoalicechen/swe1-new
     branch: main
