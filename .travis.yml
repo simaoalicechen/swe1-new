@@ -15,7 +15,8 @@ script:
   # - coverage run --source=ebdjango,polls manage.py test
   - coverage run -a --source="." manage.py
 cache: 
-  nocache 
+  Expires: 0
+  Pragma: no-cache
 after_success:
   - coveralls
 # deploy:
