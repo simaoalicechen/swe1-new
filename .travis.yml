@@ -1,7 +1,9 @@
 language: python
 python:
   - 3.7
-script: python manage.py migrate
+script: 
+  - python manage.py migrate
+  - python manage.py collectstatic --noinput
 install:
   - pip install -r requirements.txt
   - pip install black
@@ -21,8 +23,7 @@ after_success:
   - coveralls
 deploy:
   provider: elasticbeanstalk
-  access_key_id: 
-    secure: 'exgCRsW49+0sITQxhE4Bi9Ay5zGdokxZNQmliqZiddH69iWxq+qS+Pem3ScnGOMMmL3YMEYi7+n9ejSJfVWukx2kxCZLnVHFviSVtW3cQDyda/znEh0fDjQYn9H9KUW1VbmzR/5KnMIQxf1TER0oBG1iOeu7SBvRI14W3Va1PvfgkfceeWVSsGc6rVFJ5inXhQAIYZsfMv6baLs5rwm+HmU6Drw6R8hw4mufrogwBESH5+Bx+zGfDK3IjKVODYS0/ginOBSxdq6Z+dqj7b8RT8Lhhlbp0lpaV9xTiK78+8ASbobg77384VE7RJjwcRm4fDr8cKEpW/hUw6hXlY04WegLfxp9gP+UFP+8IvpTqTtM0+CiCLtkXDQjfQsPXKL3N3h0sAY0GGE7/Fw4KSWjr4dJduPbtRrc8XryxWzGvkCQjXBTXLCqswCvbhE18BH/4nB55McnP7Yi+FK5sNNvstaGpPUe9hMqMDsSWSCX/cjX3et8NV+LQSXII8V5kLcjmstFgNIf8wYfHMxDmyHGgWdTeleS1PkTznVcGlz2AaR+ZP2SzP+6E3Z5QbblnfjNdDkVACzMjLKlM4cg4k5XNRRoXSp+EJZrox+pdRoxn07coNlups6FA1Q+YPKBvBpXqn8YwuxFl8ZIpRJuqMqs0dgk6j4aIllHL0DUqxBamAo='
+  access_key_id: AKIAVQZPIVYUF6UDMH6I
   secret_access_key: 
     secure: 'bO+FOoZ84hm8WM/faihjOR2oo+YgukFklcvHkQl8Sm+GUlROESFY+tvdKtDVenWzPPam28BAfM2WjnWzVy6mUZaFFQkADAngbumuDDQVSni9OTc0a873vhkghYgRmTclR8FybdDE9lkWukG8NbZNxkYA24cHWlF6Spdkgw+ZSZQfhZCPs7DyHzO2IepJaascXRsfvocikE5jgW4Aaup5/FkK9v0479NSudCCsAWOdlfKOeVvrAACRbmVzCBzYIOSHIuO31FemIJFL1BbGxK56HVPxac0J6AWZclPQ5HNlqI+AsB1imvna9q6JClCS/Fahpz0Fm4lxK7yloGZF3YKljULR60CgfSVBmGQ3m8nT0q/2ZT8ya04WySrmp2aDMvMFh2C5WgdOS7ZFtkaPmyElv6sJcFarDVB3DJOi+DSOmxZZ1zCY+gG5+eefjzSKue+QJnSWt2apzWYsrBZJCamGiOJVaen7oUQpPguyHRiqVHFlCOiVXp+vPsCv95polUWR/Xet4o6FOD/U+s7RHlesRbNjzl7oQdlvUJsifCq22oSHd2dnPm4hHkgE9ql2XZMRsqr7RCMrw0y7zfoRP7s7yIwmVcChsjRcCVj8nMQc+JjgvkGU9izmFMxgQxujSw+UMpGhH9y4tgMbqv9BxD81wpcYg12vWj1W8fZF1sxtvQ='
   region: 'us-east-1'
@@ -32,3 +33,4 @@ deploy:
   on:
     # repo: simaoalicechen/swe1-new
     branch: main
+  skip_cleanup: true
