@@ -1,0 +1,31 @@
+language: python
+python:
+  - 3.7
+install:
+  - pip install -r requirements.txt
+  - pip install black
+  - pip install flake8
+  - pip install coverage
+  - pip install coveralls
+before_script:
+  - python manage.py migrate
+script:
+  - black --check .
+  - flake8 .
+  - coverage run --source=ebdjango,polls manage.py test
+after_script:
+  - coveralls
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: 
+    secure: "Vhs94cNN8L3FjH1S2yGqI4ANk0S8kVFMMSBfWsW+ldvKhRvkS+ttBwxx4iSkNo/OwqSffbURIyJzeWac+reKl4T00yaadFpSpr2NTwywtZndc0cV2t3VCASPlRs+QyeF1cgC/MEFg+ZwHZvbdzaGYFH0eyABy0EKtZ7tmOhBnPkjIbSeHrLSyYf1mgYZ+6QqBwYGl2L2jcygy1gs5tBr2zoeMRcdYEipcYaBCvTe5oRlOFWoTtOW+QO5x+MEBnrHfMrL+m4ad13+1oS+scGKQSBTe5BcEu/XU/CLrPxwof6TjVh9tlcM13AB6OOwwg/40KcPVpgU1gkfZEtaofQY/Y6uM7k8u2yfmJZzEX5p1VdAr+Yh9T2XG9mXzI3fanp2XfkJ5WuuhMMSJzjF2fGTJOFI81ZQRn8qRndFipW8Bg4BwjMLGYKmmCU57oealHs2THj0zTIEm/P7A6+etlQEnqJopxg+z/vdx/xlHVt15jM4lCrhWAYNE3t9RQ9fzBCG26u6heBfHnjqfEYyLkKDLEhfJHB+XPcneVQhjaenb2P2Rootskt7oY5ttbBNi/K6hB8XXx38JtkDcJPG8xhEbV/jZAX8LbWHmPVs66+Ffjzv73FOQg7OsyQ9lSlhoBXISoBXS7ttxHjKAVQaie7Yj9zo/3uueMD66qKhHAUT6Es="
+  secret_access_key: 
+    secure: "toTxtk9HGbdpdGqqGBrc4R8fww4OZRDBwLH46moGCjj+5XNDXN/mFf8lwTxgiju0VuybxNUajpC4swIBh1uR8yeBgiR8ZPF1q6kEL5sIb7zQlFiQezJlYPOzqJxylG+G1aANg+HUWj8z+TMzJTiLmXQRKE60lHRAUAwI0L2N+4QcYswT5IMcwMXeMbb4pkb3ZD2nK7YWESnug215N6DX799wp/4lV3hDs2b0dtO5m8SnoWsV13WFTl99jKBPboNTh6puaQ/Fpb74SD/zXLTnqe+0nk7PMZzculBf1RK9BZQOBOLYXDTPEsHyNFtimucud8g+B6pXw2TOrD7+XCzTqypvBbNNo8fjufKTxgRfFC/YxpwAwNpvclJNGqSjtrn3qlvIvFDZZYltmL2wHpnnoKVlZe/Voe6v0TbdDeMeMD8i73OHrnLHSAysaxph8SJ5FEswyrUabVxA0kEDct3ut1KxMlRmNROfQ+dqbYiOez6JSoYLstAGQ9UgQCn8WuTGQHq2pEJi9aW2RSz8ESyhDA3paSW339ThR6glBDby97osxjwcMgRhoQpUxZHNbQ53gZSMgks1CVJgoNjZlfC3kc4A5Endg5EmnmNlJvkGlUSgcwnb3lIa5n0pXXnbOCkS8bTkgSyfz442Azx5q7CRgpwdu8swRBIiDSdpEd1D240="
+  region: us-east-1
+  app: django-tutorial
+  env: django-env
+  bucket_name: elasticbeanstalk-us-east-1-379666869800
+  on:
+    repo: simaoalicechen/swe1-hw
+    branch: main
+  skip_cleanup: 'true'
