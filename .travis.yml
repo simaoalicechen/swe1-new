@@ -20,7 +20,7 @@ cache:
 after_success:
   - coveralls
 deploy:
-  provider: elasticbeanstalk
+  - provider: elasticbeanstalk
   access_key_id: 
     secure: "exgCRsW49+0sITQxhE4Bi9Ay5zGdokxZNQmliqZiddH69iWxq+qS+Pem3ScnGOMMmL3YMEYi7+n9ejSJfVWukx2kxCZLnVHFviSVtW3cQDyda/znEh0fDjQYn9H9KUW1VbmzR/5KnMIQxf1TER0oBG1iOeu7SBvRI14W3Va1PvfgkfceeWVSsGc6rVFJ5inXhQAIYZsfMv6baLs5rwm+HmU6Drw6R8hw4mufrogwBESH5+Bx+zGfDK3IjKVODYS0/ginOBSxdq6Z+dqj7b8RT8Lhhlbp0lpaV9xTiK78+8ASbobg77384VE7RJjwcRm4fDr8cKEpW/hUw6hXlY04WegLfxp9gP+UFP+8IvpTqTtM0+CiCLtkXDQjfQsPXKL3N3h0sAY0GGE7/Fw4KSWjr4dJduPbtRrc8XryxWzGvkCQjXBTXLCqswCvbhE18BH/4nB55McnP7Yi+FK5sNNvstaGpPUe9hMqMDsSWSCX/cjX3et8NV+LQSXII8V5kLcjmstFgNIf8wYfHMxDmyHGgWdTeleS1PkTznVcGlz2AaR+ZP2SzP+6E3Z5QbblnfjNdDkVACzMjLKlM4cg4k5XNRRoXSp+EJZrox+pdRoxn07coNlups6FA1Q+YPKBvBpXqn8YwuxFl8ZIpRJuqMqs0dgk6j4aIllHL0DUqxBamAo="
   secret_access_key: 
