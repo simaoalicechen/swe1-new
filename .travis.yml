@@ -32,4 +32,4 @@ deploy:
   on:
     repo: simaoalicechen/swe1-new
     branch: main
-  skip_cleanup: true
+  skip_cleanup: True 
