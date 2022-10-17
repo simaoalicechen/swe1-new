@@ -24,7 +24,8 @@ after_success:
 deploy:
   - provider: elasticbeanstalk
     access_key_id: AKIAVQZPIVYUF6UDMH6I
-    secret_access_key: ga2u0!f%3(q!lcn_+uw-+(tn^lqls*5tjau#iuwt%c3a=y0a(6
+    secret_access_key: 
+      secure: 'bO+FOoZ84hm8WM/faihjOR2oo+YgukFklcvHkQl8Sm+GUlROESFY+tvdKtDVenWzPPam28BAfM2WjnWzVy6mUZaFFQkADAngbumuDDQVSni9OTc0a873vhkghYgRmTclR8FybdDE9lkWukG8NbZNxkYA24cHWlF6Spdkgw+ZSZQfhZCPs7DyHzO2IepJaascXRsfvocikE5jgW4Aaup5/FkK9v0479NSudCCsAWOdlfKOeVvrAACRbmVzCBzYIOSHIuO31FemIJFL1BbGxK56HVPxac0J6AWZclPQ5HNlqI+AsB1imvna9q6JClCS/Fahpz0Fm4lxK7yloGZF3YKljULR60CgfSVBmGQ3m8nT0q/2ZT8ya04WySrmp2aDMvMFh2C5WgdOS7ZFtkaPmyElv6sJcFarDVB3DJOi+DSOmxZZ1zCY+gG5+eefjzSKue+QJnSWt2apzWYsrBZJCamGiOJVaen7oUQpPguyHRiqVHFlCOiVXp+vPsCv95polUWR/Xet4o6FOD/U+s7RHlesRbNjzl7oQdlvUJsifCq22oSHd2dnPm4hHkgE9ql2XZMRsqr7RCMrw0y7zfoRP7s7yIwmVcChsjRcCVj8nMQc+JjgvkGU9izmFMxgQxujSw+UMpGhH9y4tgMbqv9BxD81wpcYg12vWj1W8fZF1sxtvQ='
     region: 'us-east-1'
     app: 'django-tutorial'
     env: 'django-env'
