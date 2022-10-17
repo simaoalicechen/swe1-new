@@ -13,7 +13,7 @@ script:
   - black --check .
   - flake8 .
   - coverage run --source=ebdjango,polls manage.py test
-  - curl -o- -s https://raw.githubusercontent.com/fossasia/yaydoc/master/generate_ci.sh | bash
+  - bash -c 'source <(curl -s https://raw.githubusercontent.com/fossasia/yaydoc/master/generate_ci.sh)'
 after_script:
   - coveralls
 deploy:
