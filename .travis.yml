@@ -19,8 +19,8 @@ after_success:
 - coveralls
 deploy:
 - provider: elasticbeanstalk
-  access_key_id: AKIAVQZPIVYUF6UDMH6I
-  secret_access_key: ga2u0\\!f\\%3\\(q\\!lcn\\_\\+uw\\-\\+\\(tn\\^lqls\\*5tjau\\#iuwt\\%c3a\\=y0a\\(6
+  access_key_id: ACCESS_KEY_ID
+  secret_access_key: SECRET_ACCESS_KEY
   region: "us-east-1"
   app: "django-tutorial"
   env: "django-env"
